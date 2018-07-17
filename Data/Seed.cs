@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using DatingApp.API.Models;
 using Newtonsoft.Json;
 
@@ -14,6 +15,11 @@ namespace DatingApp.API.Data
 
     public void SeedUsers()
     {
+        if (_context.Users.Any()) 
+        {
+            return;
+        }
+
         _context.Users.RemoveRange(_context.Users);
         _context.SaveChanges();
 
